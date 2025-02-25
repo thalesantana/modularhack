@@ -1,4 +1,6 @@
-version: '3.7'
+version: "3.7"
+
+services:
   mongodb:
     image: mongo:latest
     container_name: mongodb_middleware
@@ -11,19 +13,3 @@ version: '3.7'
     # env_file:
     # - .env
     command: [--auth]
-
-  influxdb:
-    image: influxdb:1.8
-    container_name: skl_influxdb
-    # restart: always
-    ports:
-      - 8086:8086
-    volumes:
-      - ./influxdb-storage:/var/lib/influxdb
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      INFLUXDB_DB: skallar
-      INFLUXDB_ADMIN_USER: influxadmin
-      INFLUXDB_ADMIN_PASSWORD: pwdSKL2024
-      TZ: 'America/Sao_Paulo'
- 
