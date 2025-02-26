@@ -3,7 +3,7 @@ version: "3.7"
 services:
   mongodb:
     image: mongo:latest
-    container_name: mongodb_middleware
+    container_name: mongodb_hoofledger
     restart: always
     ports:
       - "27017:27017"

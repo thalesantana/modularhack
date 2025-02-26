@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { GadosModule } from './gados/gados.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
     MongooseModule.forRoot(
       'mongodb://hoofledger:Noixqu1v04@localhost:27017/hoofledger',
     ),
+    GadosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
