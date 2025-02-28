@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { useWallet } from '@/context/WalletContext';
+import { useLanguage } from '@/context/LanguageContext';
 import {
   Gavel,
   Home,
@@ -16,10 +17,12 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { address, connect, disconnect } = useWallet();
+  const { t } = useLanguage();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -41,13 +44,13 @@ const Navbar = () => {
             <Link href="/" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-[#6daf6f] transition-colors">
               <div className="flex items-center">
                 <Home className="h-4 w-4 mr-1" />
-                Home
+                {t('nav.home')}
               </div>
             </Link>
             <Link href="/auctions" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-[#6daf6f] transition-colors">
               <div className="flex items-center">
                 <Gavel className="h-4 w-4 mr-1" />
-                Auctions
+                {t('nav.auctions')}
               </div>
             </Link>
             
@@ -56,13 +59,13 @@ const Navbar = () => {
                 <Link href="/profile" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-[#6daf6f] transition-colors">
                   <div className="flex items-center">
                     <User className="h-4 w-4 mr-1" />
-                    Profile
+                    {t('nav.profile')}
                   </div>
                 </Link>
                 <Link href="/create-listing" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-[#6daf6f] transition-colors">
                   <div className="flex items-center">
                     <PlusCircle className="h-4 w-4 mr-1" />
-                    Create Listing
+                    {t('nav.createListing')}
                   </div>
                 </Link>
                 <Button 
@@ -71,7 +74,7 @@ const Navbar = () => {
                   onClick={disconnect}
                 >
                   <LogOut className="h-4 w-4 mr-1" />
-                  Disconnect
+                  {t('nav.disconnect')}
                 </Button>
               </>
             ) : (
@@ -81,13 +84,16 @@ const Navbar = () => {
                 onClick={connect}
               >
                 <LogIn className="h-4 w-4 mr-1" />
-                Connect Wallet
+                {t('nav.connect')}
               </Button>
             )}
+            
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageSwitcher />
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-[#6daf6f] focus:outline-none"
@@ -105,19 +111,13 @@ const Navbar = () => {
             <Link href="/" className="px-3 py-2 rounded-md text-base font-medium hover:bg-[#6daf6f] transition-colors">
               <div className="flex items-center">
                 <Home className="h-5 w-5 mr-2" />
-                Home
+                {t('nav.home')}
               </div>
             </Link>
             <Link href="/auctions" className="px-3 py-2 rounded-md text-base font-medium hover:bg-[#6daf6f] transition-colors">
               <div className="flex items-center">
                 <Gavel className="h-5 w-5 mr-2" />
-                Auctions
-              </div>
-            </Link>
-            <Link href="/marketplace" className="px-3 py-2 rounded-md text-base font-medium hover:bg-[#6daf6f] transition-colors">
-              <div className="flex items-center">
-                <ShoppingBag className="h-5 w-5 mr-2" />
-                Marketplace
+                {t('nav.auctions')}
               </div>
             </Link>
             
@@ -126,13 +126,13 @@ const Navbar = () => {
                 <Link href="/profile" className="px-3 py-2 rounded-md text-base font-medium hover:bg-[#6daf6f] transition-colors">
                   <div className="flex items-center">
                     <User className="h-5 w-5 mr-2" />
-                    Profile
+                    {t('nav.profile')}
                   </div>
                 </Link>
                 <Link href="/create-listing" className="px-3 py-2 rounded-md text-base font-medium hover:bg-[#6daf6f] transition-colors">
                   <div className="flex items-center">
                     <PlusCircle className="h-5 w-5 mr-2" />
-                    Create Listing
+                    {t('nav.createListing')}
                   </div>
                 </Link>
                 <Button 
@@ -141,7 +141,7 @@ const Navbar = () => {
                   onClick={disconnect}
                 >
                   <LogOut className="h-5 w-5 mr-2" />
-                  Disconnect
+                  {t('nav.disconnect')}
                 </Button>
               </>
             ) : (
@@ -151,7 +151,7 @@ const Navbar = () => {
                 onClick={connect}
               >
                 <LogIn className="h-5 w-5 mr-2" />
-                Connect Wallet
+                {t('nav.connect')}
               </Button>
             )}
           </div>

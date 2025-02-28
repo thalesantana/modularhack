@@ -1,19 +1,18 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { WalletProvider } from '@/context/WalletContext';
-import type { Metadata } from 'next';
-import './globals.css';
+import { LanguageProvider } from '@/context/LanguageContext';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'HoofLedger - Cattle Auction Platform',
   description: 'A blockchain-based cattle auction platform',
-  icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
-  },
 };
 
 export default function RootLayout({
@@ -23,21 +22,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <WalletProvider>
-            <div className="flex flex-col min-h-screen">
-              <Navbar />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
-            <Toaster />
-          </WalletProvider>
+          <LanguageProvider>
+            <WalletProvider>
+              <div className="flex flex-col min-h-screen">
+                <Navbar />
+                <main className="flex-grow">{children}</main>
+                <Footer />
+              </div>
+              <Toaster />
+            </WalletProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

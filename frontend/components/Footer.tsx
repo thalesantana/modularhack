@@ -1,19 +1,24 @@
-import { Facebook, Instagram, Mail, Phone, Twitter } from 'lucide-react';
-import Image from 'next/image';
+"use client";
+
+import { useLanguage } from '@/context/LanguageContext';
+import { Beef, Facebook, Instagram, Mail, Phone, Twitter } from 'lucide-react';
 import Link from 'next/link';
 
 const Footer = () => {
+  const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
+  
   return (
     <footer className="bg-[#277928] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <Image src="/logo_white.png" alt="HoofLedger Logo" width={58} height={78}  />
+              <Beef className="h-8 w-8 mr-2" />
               <span className="text-xl font-bold">HoofLedger</span>
             </div>
             <p className="text-sm">
-              The premier blockchain-based cattle auction platform, transforming livestock trading with transparency and security.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-[#6daf6f] transition-colors">
@@ -29,43 +34,40 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover:text-[#6daf6f] transition-colors">Home</Link>
+                <Link href="/" className="hover:text-[#6daf6f] transition-colors">{t('nav.home')}</Link>
               </li>
               <li>
-                <Link href="/auctions" className="hover:text-[#6daf6f] transition-colors">Auctions</Link>
+                <Link href="/auctions" className="hover:text-[#6daf6f] transition-colors">{t('nav.auctions')}</Link>
               </li>
               <li>
-                <Link href="/marketplace" className="hover:text-[#6daf6f] transition-colors">Marketplace</Link>
-              </li>
-              <li>
-                <Link href="/profile" className="hover:text-[#6daf6f] transition-colors">My Profile</Link>
+                <Link href="/profile" className="hover:text-[#6daf6f] transition-colors">{t('nav.profile')}</Link>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.resources')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/how-it-works" className="hover:text-[#6daf6f] transition-colors">How It Works</Link>
+                <Link href="/how-it-works" className="hover:text-[#6daf6f] transition-colors">{t('footer.howItWorks')}</Link>
               </li>
               <li>
                 <Link href="/faq" className="hover:text-[#6daf6f] transition-colors">FAQ</Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-[#6daf6f] transition-colors">Terms of Service</Link>
+                <Link href="/terms" className="hover:text-[#6daf6f] transition-colors">{t('footer.terms')}</Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-[#6daf6f] transition-colors">Privacy Policy</Link>
+                <Link href="/privacy" className="hover:text-[#6daf6f] transition-colors">{t('footer.police')}</Link>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.contactUs')}</h3>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
@@ -84,7 +86,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-[#6daf6f] mt-8 pt-8 text-center">
-          <p>&copy; {new Date().getFullYear()} HoofLedger. All rights reserved.</p>
+          <p>&copy; {currentYear} HoofLedger. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>
