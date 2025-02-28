@@ -1,5 +1,11 @@
 "use client";
 
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ethers } from 'ethers';
 import { useToast } from '@/hooks/use-toast';
