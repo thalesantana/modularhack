@@ -22,6 +22,9 @@ const config: HardhatUserConfig = {
       },
     },
   },
+  sourcify: {
+    enabled: true
+  },
   networks: {
     hardhat: {
       chainId: 1337,
@@ -35,7 +38,7 @@ const config: HardhatUserConfig = {
       url: process.env.SCROLL_MAINNET_RPC_URL || "https://rpc.scroll.io",
       accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
       chainId: 534352,
-    },
+    }
   },
   paths: {
     sources: "./contracts",
@@ -44,22 +47,24 @@ const config: HardhatUserConfig = {
     artifacts: "./artifacts",
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: {
+      scrollSepolia: process.env.SCROLLSCAN_API_KEY || ""
+    },
     customChains: [
       {
         network: "scrollSepolia",
         chainId: 534351,
         urls: {
-          apiURL: "https://api-sepolia.scrollscan.dev/api",
-          browserURL: "https://sepolia.scrollscan.dev",
+          apiURL: "https://api-sepolia.scrollscan.com/api",
+          browserURL: "https://sepolia.scrollscan.com/",
         },
       },
       {
-        network: "scroll",
+        network: "scrollMainnet",
         chainId: 534352,
         urls: {
-          apiURL: "https://api.scrollscan.dev/api",
-          browserURL: "https://scrollscan.dev",
+          apiURL: "https://api.scrollscan.com/api",
+          browserURL: "https://scrollscan.com/",
         },
       },
     ],

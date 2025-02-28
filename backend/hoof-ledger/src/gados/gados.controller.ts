@@ -2,10 +2,10 @@ import {
   Controller,
   Get,
   Post,
-  Body,
   Patch,
   Param,
   Delete,
+  Request,
 } from '@nestjs/common';
 import { GadosService } from './gados.service';
 import { CreateGadoDto } from './dto/create-gado.dto';
@@ -16,7 +16,8 @@ export class GadosController {
   constructor(private readonly gadosService: GadosService) {}
 
   @Post()
-  create(@Body() createGadoDto: CreateGadoDto): Promise<any> {
+  create(@Request() req): Promise<void | any> {
+    const createGadoDto: CreateGadoDto = req.body;
     return this.gadosService.create(createGadoDto);
   }
 
@@ -33,11 +34,5 @@ export class GadosController {
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateGadoDto: UpdateGadoDto) {
     return await this.gadosService.update(id, updateGadoDto);
-  }
-
-  @Delete(':id')
-  // @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: string) {
-    return this.gadosService.remove(id);
   }
 }

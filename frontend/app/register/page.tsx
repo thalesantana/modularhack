@@ -17,10 +17,10 @@ export default function Register() {
   const { toast } = useToast();
   const [userType, setUserType] = useState('buyer');
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    location: '',
+    name: 'John Rancher',
+    email: 'john.rancher@example.com',
+    company: 'Rancher Farms',
+    location: 'Austin, TX',
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -155,7 +155,7 @@ export default function Register() {
                           <div className="ml-3">
                             <h3 className="text-sm font-medium text-gray-900">Wallet Connected</h3>
                             <p className="text-xs text-gray-500 mt-1">
-                              {address.substring(0, 6)}...{address.substring(38)}
+                              {address ? `${address.substring(0, 6)}...${address.substring(38)}` : "Not connected"}
                             </p>
                           </div>
                         </div>
@@ -222,7 +222,7 @@ export default function Register() {
                           <div className="ml-3">
                             <h3 className="text-sm font-medium text-gray-900">Wallet Connected</h3>
                             <p className="text-xs text-gray-500 mt-1">
-                              {address.substring(0, 6)}...{address.substring(38)}
+                              {address ? `${address.substring(0, 6)}...${address.substring(38)}` : "Not connected"}
                             </p>
                           </div>
                         </div>

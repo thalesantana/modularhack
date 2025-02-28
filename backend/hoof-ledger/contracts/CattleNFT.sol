@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
 /**
  * @title CattleNFT
  * @dev Contract for representing cattle as NFTs
  */
-contract CattleNFT is ERC721URIStorage, Ownable {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+contract CattleNFT is ERC721, ERC721URIStorage, Ownable {
+    // Replace Counters with a simple counter variable
+    uint256 private _tokenIdCounter;
     
     // Mapping from token ID to cattle metadata
     mapping(uint256 => CattleData) public cattleData;
@@ -31,7 +31,7 @@ contract CattleNFT is ERC721URIStorage, Ownable {
     event CattleMinted(uint256 indexed tokenId, address owner, string name, string breed);
     event CattleListedForSale(uint256 indexed tokenId, bool isForSale);
     
-    constructor() ERC721("HoofLedger Cattle NFT", "CATTLE") Ownable(msg.sender) {}
+    constructor() ERC721("CattleNFT", "CTLNFT") Ownable(msg.sender) {}
     
     /**
      * @dev Creates a new cattle NFT

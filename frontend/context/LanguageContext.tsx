@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'en' | 'pt-BR';
 
@@ -25,7 +25,7 @@ const translations = {
     'home.hero.subtitle': 'The future of cattle auctions on the blockchain. Secure, transparent, and efficient.',
     'home.hero.browseAuctions': 'Browse Auctions',
     'home.hero.register': 'Register Now',
-    'home.features.title': 'Why Choose HoofLedger',
+    'home.features.title': 'Why Choose',
     'home.features.blockchain.title': 'Secure Blockchain Technology',
     'home.features.blockchain.desc': 'Every transaction is recorded on the blockchain, ensuring complete transparency and security for both buyers and sellers.',
     'home.features.nft.title': 'NFT Cattle Certification',
@@ -55,7 +55,6 @@ const translations = {
     'footer.resources': 'Resources',
     'footer.contactUs': 'Contact Us',
     'footer.rights': 'All rights reserved.',
-    'footer.description': 'The premier blockchain-based cattle auction platform, transforming livestock trading with transparency and security.',
     
     // Profile
     'profile.editProfile': 'Edit Profile',
@@ -109,7 +108,7 @@ const translations = {
     'home.hero.subtitle': 'O futuro dos leilões de gado na blockchain. Seguro, transparente e eficiente.',
     'home.hero.browseAuctions': 'Explorar Leilões',
     'home.hero.register': 'Registre-se Agora',
-    'home.features.title': 'Por que Escolher HoofLedger',
+    'home.features.title': 'Por que Escolher',
     'home.features.blockchain.title': 'Tecnologia Blockchain Segura',
     'home.features.blockchain.desc': 'Cada transação é registrada na blockchain, garantindo total transparência e segurança para compradores e vendedores.',
     'home.features.nft.title': 'Certificação de Gado em NFT',
@@ -138,11 +137,7 @@ const translations = {
     'footer.quickLinks': 'Links Rápidos',
     'footer.resources': 'Recursos',
     'footer.contactUs': 'Fale Conosco',
-    'footer.terms': 'Termos de Uso',
-    'footer.police': 'Política de Privacidade',
-    'footer.howItWorks': 'Como Funciona',
     'footer.rights': 'Todos os direitos reservados.',
-    'footer.description': 'A principal plataforma de leilão de gado baseada em blockchain, transformando o comércio de gado com transparência e segurança.',
     
     // Profile
     'profile.editProfile': 'Editar Perfil',
@@ -161,8 +156,8 @@ const translations = {
     'profile.wallet.viewEtherscan': 'Ver no Etherscan',
     'profile.wallet.change': 'Alterar Carteira Vinculada',
     'profile.wallet.changeTitle': 'Alterar Carteira',
-    'profile.wallet.changeDesc': 'Vincule uma nova carteira ao seu perfil HoofLedger',
-    'profile.wallet.changeDialogDesc': 'Vincule uma nova carteira ao seu perfil HoofLedger. Isso transferirá seus dados de perfil para a nova carteira.',
+    'profile.wallet.changeDesc': 'Vincular uma nova carteira ao seu perfil HoofLedger',
+    'profile.wallet.changeDialogDesc': 'Vincular uma nova carteira ao seu perfil HoofLedger. Isso transferirá seus dados de perfil para a nova carteira.',
     'profile.wallet.important': 'Importante',
     'profile.wallet.warningMessage': 'Você deve ter acesso a ambas as carteiras para completar este processo. Todos os seus NFTs e ativos precisarão ser transferidos separadamente.',
     'profile.wallet.current': 'Carteira Atual',
@@ -170,13 +165,13 @@ const translations = {
     'profile.wallet.newWalletDesc': 'Digite o endereço Ethereum da sua nova carteira',
     'profile.wallet.confirm': 'Alterar Carteira',
     'profile.wallet.connect': 'Conecte Sua Carteira',
-    'profile.wallet.connectMessage': 'Por favor, conecte sua carteira ou registre-se para ver suas informações de carteira.',
+    'profile.wallet.connectMessage': 'Por favor, conecte sua carteira ou registre-se para visualizar suas informações de carteira.',
     'profile.wallet.connected': 'Conectado Desde',
     'profile.backToProfile': 'Voltar ao Perfil',
     
     // Common
     'common.active': 'Ativo',
-    'common.ended': 'Encerrado',
+    'common.ended': 'Finalizado',
     'common.view': 'Visualizar',
     'common.cancel': 'Cancelar',
     'common.save': 'Salvar Alterações',
@@ -197,29 +192,11 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  const [language, setLanguageState] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('en');
 
-  useEffect(() => {
-    // Check if language preference is stored in localStorage
-    const storedLanguage = localStorage.getItem('language') as Language;
-    if (storedLanguage && (storedLanguage === 'en' || storedLanguage === 'pt-BR')) {
-      setLanguageState(storedLanguage);
-    } else {
-      // Check browser language
-      const browserLang = navigator.language;
-      if (browserLang.startsWith('pt')) {
-        setLanguageState('pt-BR');
-      }
-    }
-  }, []);
-
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('language', lang);
-    document.documentElement.lang = lang;
-  };
-
+  // Function to translate keys
   const t = (key: string): string => {
+    if (!translations[language]) return key;
     return translations[language][key as keyof typeof translations[typeof language]] || key;
   };
 
