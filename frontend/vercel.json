@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/$1"
     }
   ],
   "headers": [
@@ -26,5 +26,6 @@
   ],
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
-  "framework": "vite"
+  "framework": "nextjs",
+  "outputDirectory": "out"
 }
