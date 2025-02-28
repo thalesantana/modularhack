@@ -26,6 +26,5 @@
   ],
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
-  "framework": "nextjs",
-  "outputDirectory": "out"
+  "framework": "nextjs"
 }
