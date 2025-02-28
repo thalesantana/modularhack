@@ -16,6 +16,7 @@ import {
   ShoppingBag, 
   PlusCircle 
 } from 'lucide-react';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Beef className="h-8 w-8 mr-2" />
+              <Image src="/logo.png" alt="HoofLedger Logo" width={58} height={78}  />
               <span className="text-xl font-bold">HoofLedger</span>
             </Link>
           </div>
@@ -48,12 +49,6 @@ const Navbar = () => {
               <div className="flex items-center">
                 <Gavel className="h-4 w-4 mr-1" />
                 Auctions
-              </div>
-            </Link>
-            <Link href="/marketplace" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-[#6daf6f] transition-colors">
-              <div className="flex items-center">
-                <ShoppingBag className="h-4 w-4 mr-1" />
-                Marketplace
               </div>
             </Link>
             
