@@ -32,7 +32,57 @@
 $ npm install
 ```
 
-## Compile and run the project
+## Smart Contracts & Blockchain
+
+Este projeto inclui smart contracts para representação de gado como NFTs e leilões desses NFTs na blockchain.
+
+### Pré-requisitos para Blockchain
+
+- Carteira Ethereum com ETH na rede Scroll (Sepolia Testnet)
+- Chave privada da carteira (para deploy dos contratos)
+
+### Contratos incluídos
+
+1. **CattleNFT**: Contrato para representar o gado como NFTs
+2. **CattleAuction**: Contrato para leilões de gado
+
+### Configuração
+
+1. Copie o arquivo `.env.example` para `.env` e configure as variáveis:
+
+```bash
+cp .env.example .env
+```
+
+2. Adicione sua chave privada e verifique as outras configurações em `.env`.
+
+### Deploy na rede Scroll
+
+Para fazer o deploy dos contratos na rede Scroll Sepolia (testnet):
+
+```bash
+npx hardhat run scripts/deploy-scroll.ts --network scrollSepolia
+```
+
+Para a rede principal (Scroll Mainnet):
+
+```bash
+npx hardhat run scripts/deploy-scroll.ts --network scrollMainnet
+```
+
+Após o deploy, os endereços dos contratos serão salvos em `deployment-info.json` e atualizados no arquivo `.env`.
+
+### Interagindo com os contratos
+
+Para testar os contratos após o deploy:
+
+```bash
+npx hardhat run scripts/interact.ts --network scrollSepolia
+```
+
+Este script cria um NFT de gado e inicia um leilão para o mesmo.
+
+## Desenvolvimento
 
 ```bash
 # development
