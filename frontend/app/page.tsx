@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
-import { Beef, ShieldCheck, TrendingUp } from 'lucide-react';
+import { Beef, ShieldCheck, TrendingUp, Gavel } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,7 +13,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-cover bg-center py-32"
-        style={{ backgroundImage: "url('background.png')" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1516367069252-28c0dda48b08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -147,7 +147,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Sample Auction Items */}
             <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md">
-              <div className="relative w-full h-48">
+              <div className="w-full h-48 relative">
                 <Image 
                   src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                   alt="Angus Bull" 
@@ -178,9 +178,9 @@ export default function Home() {
             </div>
             
             <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md">
-              <div className="relative w-full h-48">
+              <div className="w-full h-48 relative">
                 <Image 
-                  src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRbv9-eh3N7k4CCDlekwFRX2RZwmSlFsaROS3Q2NKaHCiV7imc01_mPMP2Rbm7aTGmb0HWXrHH5yJvMjG_vOysdRg" 
+                  src="https://images.unsplash.com/photo-1545468259-3377ebe47caf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                   alt="Hereford Heifer" 
                   fill
                   className="object-cover"
@@ -209,7 +209,7 @@ export default function Home() {
             </div>
             
             <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md">
-              <div className="relative w-full h-48">
+              <div className="w-full h-48 relative">
                 <Image 
                   src="https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                   alt="Brahman Bull" 
