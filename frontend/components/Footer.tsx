@@ -1,7 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Mail, Phone } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone, Twitter } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -10,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <Image src="/logo.png" alt="HoofLedger Logo" width={58} height={78}  />
+              <Image src="/logo_white.png" alt="HoofLedger Logo" width={58} height={78}  />
               <span className="text-xl font-bold">HoofLedger</span>
             </div>
             <p className="text-sm">

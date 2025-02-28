@@ -1,22 +1,21 @@
 "use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useWallet } from '@/context/WalletContext';
-import { 
-  Menu, 
-  X, 
-  Beef, 
-  Gavel, 
-  User, 
-  LogOut, 
-  LogIn, 
-  Home, 
-  ShoppingBag, 
-  PlusCircle 
+import {
+  Gavel,
+  Home,
+  LogIn,
+  LogOut,
+  Menu,
+  PlusCircle,
+  ShoppingBag,
+  User,
+  X
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +31,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image src="/logo.png" alt="HoofLedger Logo" width={58} height={78}  />
+              <Image src="/logo_white.png" alt="HoofLedger Logo" width={58} height={78}  />
               <span className="text-xl font-bold">HoofLedger</span>
             </Link>
           </div>
